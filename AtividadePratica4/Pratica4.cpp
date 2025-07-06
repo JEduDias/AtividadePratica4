@@ -9,13 +9,13 @@ int main() {
     float comp, larg, area, iluminancia, fluxoTotal, qtdLamp;
 
     
-    printf("Selecione o tipo de cômodo:\n1 - Quarto\n2 - Escritório\n3 - Cozinha\nDigite a opção desejada: ");
+    printf("Selecione o tipo de comodo:\n1 - Quarto\n2 - Escritorio\n3 - Cozinha\nDigite a opção desejada: ");
 	scanf_s("%d", &tipo); // lê tipo de comomo
 
-    printf("Digite o comprimento do cômodo (m): ");
+    printf("Digite o comprimento do comodo (m): ");
 	scanf_s("%f", &comp); // lê comprimento
 
-    printf("Digite a largura do cômodo (m): ");
+    printf("Digite a largura do comodo (m): ");
 	scanf_s("%f", &larg); // lê largura
 
 
