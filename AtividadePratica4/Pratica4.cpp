@@ -1,62 +1,42 @@
-
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
 
 int main() {
-	setlocale (LC_ALL,  "Portuguese"); // para  aceitar os acentos
+    setlocale(LC_ALL, "Portuguese"); // para aceitar acentos
 
-	int tipoComodo;
-	float comp, larg, area, iluminancia, fluxoTotal, qtdLamp;
+    int tipo;
+    float comp, larg, area, iluminancia, fluxoTotal, qtdLamp;
 
-	// mostra as  opções
-	printf("Selecione o tipo de comodo:\n");
-	printf("1 - Quarto\n");
-	printf("2 - Escritotio \n");
-	printf("3 - Cozinha\n ");
-	printf("Digite a opção desejada: ");
-	scanf_s("%d", &tipoComodo );
+    
+    printf("Selecione o tipo de cômodo:\n1 - Quarto\n2 - Escritório\n3 - Cozinha\nDigite a opção desejada: ");
+    scanf_s("%d", &tipo);//solocita o tipo do comomo
 
-	// verifica se digitou uma opção valida
-	if (tipoComodo < 1 || tipoComodo > 3) {
-		printf("Opção invalida! Encerrando...\n");
-		return 1;
-	}
+    printf("Digite o comprimento do cômodo (m): ");
+	scanf_s("%f", &comp);// solicita o comprimento do cômodo
+    printf("Digite a largura do cômodo (m): ");
+	scanf_s("%f", &larg);// solicita a largura do cômodo
 
-	// pega as medidas do cômodo
-	printf("Digite o comprimento do cômodo (m): ");
-	scanf_s("%f", &comp);
+    // calcula a área
+    area = comp * larg;
 
-	printf("Digite a largura do cômodo (m): ");
-	scanf_s("%f", &larg);
+    // define iluminância conforme tipo
+    if (tipo == 1)
+        iluminancia = 150;
+    else
+        iluminancia = 300;
 
-	// calcula a área
-	area = comp * larg;
+    // calcula fluxo total necessário
+    fluxoTotal = area * iluminancia / 0.8;
 
-	// define a iluminância conforme o tipo
-	if (tipoComodo == 1) {
-		iluminancia = 150;
-	}
-	else {
-		iluminancia = 300;
-	}
+    // calcula qtd mínima de lâmpadas
+    qtdLamp = ceil(fluxoTotal / 800);
 
-	// calcula o fluxo total necessário
-	fluxoTotal = area * iluminancia / 0.8;
+    // saída
+    printf("\nTipo de cômodo: %d (Iluminância recomendada: %.0f lux)\n", tipo, iluminancia);
+    printf("Área do cômodo: %.2f m²\n", area);
+    printf("Fluxo luminoso total necessário: %.2f lúmens\n", fluxoTotal);
+    printf("Quantidade mínima de lâmpadas recomendadas: %.0f\n", qtdLamp);
 
-	// calcula a quantidade mínima de lâmpadas (800 lúmens cada)
-	qtdLamp = ceil(fluxoTotal / 800);
-
-	// mostra os resultados
-	printf("\nTipo de cômodo: ");
-	if (tipoComodo == 1) printf("Quarto");
-	else if (tipoComodo == 2) printf("Escritório");
-	else printf("Cozinha");
-
-	printf(" (Iluminância recomendada: %.0f lux)\n", iluminancia);
-	printf("Área do cômodo: %.2f m²\n", area);
-	printf("Fluxo luminoso total necessário: %.2f lúmens\n", fluxoTotal);
-	printf("Quantidade mínima de lâmpadas recomendadas: %.0f\n", qtdLamp);
-
-	return 0;
+    return 0;
 }
